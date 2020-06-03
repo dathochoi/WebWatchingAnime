@@ -1,0 +1,10 @@
+﻿@using WebWatchingAnime.ViewModel.ViewModel;
+@model List<YearViewModel>
+    <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="@item.Id">@item.Name</a>
+            </li>
+        }
+    </ul>

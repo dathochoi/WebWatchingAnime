@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebWatchingAnime", "WebWatchingAnime\WebWatchingAnime.csproj", "{12529073-2E1C-4815-B474-8EC3CCA6AB94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebWatchingAnime", "WebWatchingAnime\WebWatchingAnime.csproj", "{12529073-2E1C-4815-B474-8EC3CCA6AB94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebWatchingAnime.Data", "WebWatchingAnime.Data\WebWatchingAnime.Data.csproj", "{25894E23-74E8-46FC-B992-032331642BF8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebWatchingAnime.Service", "WebWatchingAnime.Service\WebWatchingAnime.Service.csproj", "{E5C264D3-3188-4F7A-86F0-FA80E215F57F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebWatchingAnime.ViewModel", "WebWatchingAnime.ViewModel\WebWatchingAnime.ViewModel.csproj", "{BC0423FD-E4F0-4DF8-A598-C8425346C5C6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebWatchingAnime.Utilities", "WebWatchingAnime.Utilities\WebWatchingAnime.Utilities.csproj", "{9529C8B9-8FB3-438A-9EA8-325A62ABE62A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.WebWatchingAnime", "1.WebWatchingAnime", "{DD11FC58-77A8-4D81-A798-84D9CC937A86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.WebWatchingAnime.Service", "3.WebWatchingAnime.Service", "{D1F0D20D-74B6-4333-9E7B-B1D1C02B9429}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.WebWatchingAnime.Data", "4.WebWatchingAnime.Data", "{9F89818F-2D32-400A-BD5A-D25785CA7E48}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.WebWatchingAnime.Utilities", "5.WebWatchingAnime.Utilities", "{8BA5C42E-9D44-4300-991E-72C7939CEA6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.WebWatchingAnime.ViewModel", "2.WebWatchingAnime.ViewModel", "{19299131-C2D8-47DC-B58A-4D7182818737}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +33,32 @@ Global
 		{12529073-2E1C-4815-B474-8EC3CCA6AB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12529073-2E1C-4815-B474-8EC3CCA6AB94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12529073-2E1C-4815-B474-8EC3CCA6AB94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25894E23-74E8-46FC-B992-032331642BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25894E23-74E8-46FC-B992-032331642BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25894E23-74E8-46FC-B992-032331642BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25894E23-74E8-46FC-B992-032331642BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5C264D3-3188-4F7A-86F0-FA80E215F57F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C264D3-3188-4F7A-86F0-FA80E215F57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C264D3-3188-4F7A-86F0-FA80E215F57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C264D3-3188-4F7A-86F0-FA80E215F57F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC0423FD-E4F0-4DF8-A598-C8425346C5C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0423FD-E4F0-4DF8-A598-C8425346C5C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0423FD-E4F0-4DF8-A598-C8425346C5C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0423FD-E4F0-4DF8-A598-C8425346C5C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9529C8B9-8FB3-438A-9EA8-325A62ABE62A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9529C8B9-8FB3-438A-9EA8-325A62ABE62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9529C8B9-8FB3-438A-9EA8-325A62ABE62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9529C8B9-8FB3-438A-9EA8-325A62ABE62A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{12529073-2E1C-4815-B474-8EC3CCA6AB94} = {DD11FC58-77A8-4D81-A798-84D9CC937A86}
+		{25894E23-74E8-46FC-B992-032331642BF8} = {9F89818F-2D32-400A-BD5A-D25785CA7E48}
+		{E5C264D3-3188-4F7A-86F0-FA80E215F57F} = {D1F0D20D-74B6-4333-9E7B-B1D1C02B9429}
+		{BC0423FD-E4F0-4DF8-A598-C8425346C5C6} = {19299131-C2D8-47DC-B58A-4D7182818737}
+		{9529C8B9-8FB3-438A-9EA8-325A62ABE62A} = {8BA5C42E-9D44-4300-991E-72C7939CEA6C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {725AA058-1B3D-4E40-A3C9-A9D409FCC9A7}

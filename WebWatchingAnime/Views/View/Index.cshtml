@@ -1,0 +1,59 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@model IEnumerable<WebWatchingAnime.ViewModel.ViewModel.EpisodeViewModel>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@section scripts {
+    @*<script src="~/Client/index.js"></script>*@
+    <script src="~/Client/view.js"></script>
+    <script>
+        var view = new viewcontroller();
+        view.init();
+
+    </script>
+}
+<section class="section details">
+    <!-- details background -->
+    @*<div class="details__bg" data-bg="~/Client-side/img/home/home__bg.jpg"></div>*@
+    <!-- end details background -->
+    <!-- details content -->
+    <div class="container">
+        <div class="row">
+            <!-- title -->
+            <div class="col-12">
+                <h1 class="details__title">I Dream in Another Language</h1>
+            </div>
+            <!-- end title -->
+            <!-- content -->
+            <!-- end content -->
+            <!-- player -->
+            <div class="col-12 " id="btnClick">
+                @*<iframe id="btnClic2" width="853" height="480" src="//ok.ru/videoembed/3279805221598" frameborder="0" allow="autoplay" allowfullscreen></iframe>*@
+                @*<iframe width="560" height="315" src="//ok.ru/videoembed/3279805221598?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>*@
+                @Html.Raw(Model.First().Src);
+            </div>
+            @*<div class="col-12">
+
+                    <video controls src="https://web.lotuscdn.vn/2020/5/10/1589079928805-2e519ivml1.mp4"></video>
+
+
+                </div>
+                <div class="col-12">
+                    <iframe src="https://drive.google.com/file/d/1r8T_j3A2S-byVb-RknWO4YNU6-hkkPt_/preview" allowfullscreen></iframe>
+                     end player
+                </div>*@
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <button type="button" class="btn btn-secondary btnEpi" data-id=@item.Id data-src='@item.Src'>@item.Number</button>
+            }
+        </div>
+    </div>
+    <!-- end details content -->
+</section>
+<!-- end details -->
+<!-- content -->

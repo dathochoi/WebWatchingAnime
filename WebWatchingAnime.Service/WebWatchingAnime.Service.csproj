@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebWatchingAnime.Data\WebWatchingAnime.Data.csproj" />
+    <ProjectReference Include="..\WebWatchingAnime.Utilities\WebWatchingAnime.Utilities.csproj" />
+    <ProjectReference Include="..\WebWatchingAnime.ViewModel\WebWatchingAnime.ViewModel.csproj" />
+  </ItemGroup>
+
+</Project>

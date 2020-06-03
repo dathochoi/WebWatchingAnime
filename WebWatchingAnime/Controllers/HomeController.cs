@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebWatchingAnime.Models;
+using WebWatchingAnime.Service.Implementation;
+using WebWatchingAnime.Service.Interfaces;
 
 namespace WebWatchingAnime.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IAnimeService _animeService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IAnimeService _animeServce)
         {
-            _logger = logger;
+            this._animeService = _animeServce;
         }
 
         public IActionResult Index()
@@ -23,20 +25,21 @@ namespace WebWatchingAnime.Controllers
             return View();
         }
 
-        public IActionResult Details()
+        [HttpGet]
+        public IActionResult Details(int Id)
         {
+            var vm = _animeService.GetById(Id);
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
         {
-            return View();
+
+            var model = _animeService.GetAllPagingClient(categoryId, keyword, page, pageSize);
+            return new OkObjectResult(model);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+
     }
 }

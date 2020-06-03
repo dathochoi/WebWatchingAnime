@@ -1,0 +1,33 @@
+﻿<div id="modal-add-edit" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Sửa Năm</h4>
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12 grid-margin stretch-card">
+
+                    <div class="card">
+                        <div class="card-body" id="horizontal-form">
+                            <form class="form-horizontal" role="form" id="frmMaintainance2">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group row">
+                                    <input type="hidden" id="hidIdM" value="0" />
+                                    <label for="txtNameM" class="col-sm-4 col-4 control-label no-padding-right"  style="transform: translateY(50%);">Năm</label>
+                                    <div class="col-sm-8 col-8">
+                                        <input type="text" name="txtNameM" class="form-control" id="txtNameM">
+                                    </div>
+                                </div>
+                                <button type="submit" id="btnUpdate" class="btn btn-gradient-primary mr-2">Save</button>
+                                @*<button class="btn btn-light">Cancel</button>*@
+                                <button type="button" class="bootbox-close-button  btn btn-light" data-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

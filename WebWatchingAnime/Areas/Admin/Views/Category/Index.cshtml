@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/layout.cshtml";
+}
+
+@section Scripts{
+
+
+    <script src="~/Admin/Categiry/index.js"></script>
+    <script>
+        var category = new categoryController();
+        category.init();
+    </script>
+}
+<div class="row">
+    @*<div class=" col-sm-4  col-12 form-group">
+            <select class="form-control" id="ddlCategorySearch">
+                <option>Anime</option>
+                <option>Film</option>
+            </select>
+        </div>*@
+
+    <div class=" col-sm-4  col-12 form-group">
+        <form class="form-horizontal" role="form" id="frmMaintainance">
+            @Html.AntiForgeryToken()
+            <div class="input-group">
+                <input type="text" id="txtKeyword" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                <div class="input-group-append">
+                    <button class="btn btn-sm btn-gradient-primary" id="btnSave" type="button">Thêm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    @*<div class="col-sm-4  col-12 form-group ">
+            <button type="button" id="btnCreate" class="btn btn-primary btn-fw float-right float-sm-none">Create</button>
+        </div>*@
+
+    <div class="col-12 grid-margin stretch-card">
+
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Thể loại </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbl-content"></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td>{{Name}}</td>
+        <td>
+            <button class="btn btn-success btn-sm btn-edit" data-id="{{Id}}"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger btn-sm btnDelete" data-id="{{Id}}"><i class="fas fa-trash-alt"></i></button>
+        </td>
+    </tr>
+</script>
+@await Html.PartialAsync("_AddEditModal.cshtml")

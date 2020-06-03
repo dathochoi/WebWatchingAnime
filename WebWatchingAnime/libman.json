@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "twbs-pagination@1.4.2",
+      "destination": "wwwroot/lib/twbs-pagination/"
+    },
+    {
+      "library": "ckeditor@4.12.1",
+      "destination": "wwwroot/lib/ckeditor/"
+    },
+    {
+      "library": "notify.js@3.0.0",
+      "destination": "wwwroot/lib/notify.js/"
+    },
+    {
+      "library": "notify@0.4.2",
+      "destination": "wwwroot/lib/notify/"
+    },
+    {
+      "library": "bootbox.js@5.4.0",
+      "destination": "wwwroot/lib/bootbox.js/"
+    },
+    {
+      "library": "mustache.js@3.1.0",
+      "destination": "wwwroot/lib/mustache.js/"
+    },
+    {
+      "library": "jquery@3.5.1",
+      "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "library": "toastr.js@2.1.4",
+      "destination": "wwwroot/lib/toastr.js/"
+    }
+  ]
+}

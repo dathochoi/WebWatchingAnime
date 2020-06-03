@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "Episode";
+    Layout = "~/Areas/Admin/Views/Shared/layout.cshtml";
+}
+
+@section Scripts{
+    <script src="~/Admin/Episode/index.js"></script>
+    <script>
+        var episode = new episodeController();
+        episode.init();
+    </script>
+}
+
+<div class="row">
+    <div class=" col-sm-4  col-12 form-group">
+        @*<label for="ddlCategorySearch">Categories</label>*@
+        <select class="form-control" id="ddlCategorySearch">
+        </select>
+    </div>
+
+    <div class=" col-sm-4  col-12 form-group">
+        <div class="input-group">
+            <input type="text" id="txtKeyword" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-sm btn-gradient-primary" type="button">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4  col-12 form-group ">
+        <button type="button" id="btnCreate" class="btn btn-primary btn-fw float-right float-sm-none">Create</button>
+    </div>
+
+    <div class="col-12 grid-margin stretch-card">
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title" id="AnimeId" data-id=@ViewData["Id"]>  @ViewData["Id"]. @ViewData["AnimeName"]</h4>
+                @*<p class="card-description">
+                        Add class <code>.table-hover</code>
+                    </p>*@
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th >STT </th>
+                            <th >Tên</th>
+                            <th  style="max-width: 500px; overflow:hidden">Link</th>
+                            @*<th class="col-1">Year</th>*@
+                            <th ></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-content"></tbody>
+                </table>
+                <div class="row">
+                    <ul id="paginationUL"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td>{{STT}}</td>
+        <td>{{Name}}</td>
+        <td style="max-width: 500px; overflow:hidden">{{Src}}</td>
+        @*<td>{{{Year}}}</td>*@
+        <td>
+            <button class="btn btn-success btn-sm btn-edit" data-id="{{Id}}"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger btn-sm btn-delete" data-id="{{Id}}"><i class="fas fa-trash-alt"></i></button>
+        </td>
+    </tr>
+</script>
+@await Html.PartialAsync("_AddEditModal.cshtml")

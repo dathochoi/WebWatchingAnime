@@ -9,8 +9,10 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
 
     <!-- CSS -->
+    @*<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />*@
     <link rel="stylesheet" href="~/Client-side/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="~/Client-side/css/bootstrap-grid.min.css">
+
     <link rel="stylesheet" href="~/Client-side/css/owl.carousel.min.css">
     <link rel="stylesheet" href="~/Client-side/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="~/Client-side/css/nouislider.min.css">
@@ -18,6 +20,12 @@
     <link rel="stylesheet" href="~/Client-side/css/plyr.css">
     <link rel="stylesheet" href="~/Client-side/css/photoswipe.css">
     <link rel="stylesheet" href="~/Client-side/css/default-skin.css">
+    <link href="~/lib/jquery.growl/stylesheets/jquery.growl.css" rel="stylesheet" />
+
+    <link href="~/lib/fontawesome-free-5.13.0-web/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free-5.13.0-web/css/brands.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free-5.13.0-web/css/solid.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="~/Client-side/css/main.css">
 
     <!-- Favicons -->
@@ -26,7 +34,7 @@
     <link rel="apple-touch-icon" sizes="72x72" href="~/Client-side/icon/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="~/Client-side/icon/apple-touch-icon-114x114.png">
     <link rel="apple-touch-icon" sizes="144x144" href="~/Client-side/icon/apple-touch-icon-144x144.png">
-
+    @RenderSection("Styles", required: false)
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Dmitry Volkov">
@@ -51,37 +59,40 @@
                             <ul class="header__nav">
                                 <!-- dropdown -->
                                 <li class="header__nav-item">
-                                    <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuHome" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                                    <a href="/" class="header__nav-link">Home</a>
 
-                                    <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuHome">
-                                        <li><a href="index.html">Home slideshow bg</a></li>
-                                        <li><a href="index2.html">Home static bg</a></li>
-                                    </ul>
                                 </li>
                                 <!-- end dropdown -->
                                 <!-- dropdown -->
                                 <li class="header__nav-item">
                                     <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog</a>
+                                    @await Component.InvokeAsync("Category")
 
-                                    <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
-                                        <li><a href="catalog1.html">Catalog Grid</a></li>
-                                        <li><a href="catalog2.html">Catalog List</a></li>
-                                        <li><a href="details1.html">Details Movie</a></li>
-                                        <li><a href="details2.html">Details TV Series</a></li>
-                                    </ul>
                                 </li>
                                 <!-- end dropdown -->
-
                                 <li class="header__nav-item">
-                                    <a href="pricing.html" class="header__nav-link">Pricing Plan</a>
+                                    <a href="faq.html" class="header__nav-link">Animes</a>
                                 </li>
 
                                 <li class="header__nav-item">
-                                    <a href="faq.html" class="header__nav-link">Help</a>
+                                    <a href="faq.html" class="header__nav-link">Films</a>
                                 </li>
+
+                                <li class="header__nav-item">
+                                    <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Year</a>
+                                    @await Component.InvokeAsync("Year")
+                                </li>
+
+                                @*<li class="header__nav-item">
+                                    <a href="faq.html" class="header__nav-link">Animes</a>
+                                </li>
+
+                                <li class="header__nav-item">
+                                    <a href="faq.html" class="header__nav-link">Films</a>
+                                </li>*@
 
                                 <!-- dropdown -->
-                                <li class="dropdown header__nav-item">
+                                @*<li class="dropdown header__nav-item">
                                     <a class="dropdown-toggle header__nav-link header__nav-link--more" href="#" role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon ion-ios-more"></i></a>
 
                                     <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuMore">
@@ -90,7 +101,7 @@
                                         <li><a href="signup.html">Sign Up</a></li>
                                         <li><a href="404.html">404 Page</a></li>
                                     </ul>
-                                </li>
+                                </li>*@
                                 <!-- end dropdown -->
                             </ul>
                             <!-- end header nav -->
@@ -141,145 +152,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="section__wrap">
-                        <!-- section title -->
-                        <h2 class="section__title">Catalog grid</h2>
-                        <!-- end section title -->
-                        <!-- breadcrumb -->
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb__item"><a href="#">Home</a></li>
-                            <li class="breadcrumb__item breadcrumb__item--active">Catalog grid</li>
-                        </ul>
-                        <!-- end breadcrumb -->
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </section>
     <!-- end page title -->
-    <!-- filter -->
-    <div class="filter">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="filter__content">
-                        <div class="filter__items">
-                            <!-- filter item -->
-                            <div class="filter__item" id="filter__genre">
-                                <span class="filter__item-label">GENRE:</span>
-
-                                <div class="filter__item-btn dropdown-toggle" role="navigation" id="filter-genre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <input type="button" value="Action/Adventure">
-                                    <span></span>
-                                </div>
-
-                                <ul class="filter__item-menu dropdown-menu scrollbar-dropdown" aria-labelledby="filter-genre">
-                                    <li>Action/Adventure</li>
-                                    <li>Animals</li>
-                                    <li>Animation</li>
-                                    <li>Biography</li>
-                                    <li>Comedy</li>
-                                    <li>Cooking</li>
-                                    <li>Dance</li>
-                                    <li>Documentary</li>
-                                    <li>Drama</li>
-                                    <li>Education</li>
-                                    <li>Entertainment</li>
-                                    <li>Family</li>
-                                    <li>Fantasy</li>
-                                    <li>History</li>
-                                    <li>Horror</li>
-                                    <li>Independent</li>
-                                    <li>International</li>
-                                    <li>Kids</li>
-                                    <li>Kids & Family</li>
-                                    <li>Medical</li>
-                                    <li>Military/War</li>
-                                    <li>Music</li>
-                                    <li>Musical</li>
-                                    <li>Mystery/Crime</li>
-                                    <li>Nature</li>
-                                    <li>Paranormal</li>
-                                    <li>Politics</li>
-                                    <li>Racing</li>
-                                    <li>Romance</li>
-                                    <li>Sci-Fi/Horror</li>
-                                    <li>Science</li>
-                                    <li>Science Fiction</li>
-                                    <li>Science/Nature</li>
-                                    <li>Spanish</li>
-                                    <li>Travel</li>
-                                    <li>Western</li>
-                                </ul>
-                            </div>
-                            <!-- end filter item -->
-                            <!-- filter item -->
-                            <div class="filter__item" id="filter__quality">
-                                <span class="filter__item-label">QUALITY:</span>
-
-                                <div class="filter__item-btn dropdown-toggle" role="navigation" id="filter-quality" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <input type="button" value="HD 1080">
-                                    <span></span>
-                                </div>
-
-                                <ul class="filter__item-menu dropdown-menu scrollbar-dropdown" aria-labelledby="filter-quality">
-                                    <li>HD 1080</li>
-                                    <li>HD 720</li>
-                                    <li>DVD</li>
-                                    <li>TS</li>
-                                </ul>
-                            </div>
-                            <!-- end filter item -->
-                            <!-- filter item -->
-                            <div class="filter__item" id="filter__rate">
-                                <span class="filter__item-label">IMBd:</span>
-
-                                <div class="filter__item-btn dropdown-toggle" role="button" id="filter-rate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <div class="filter__range">
-                                        <div id="filter__imbd-start"></div>
-                                        <div id="filter__imbd-end"></div>
-                                    </div>
-                                    <span></span>
-                                </div>
-
-                                <div class="filter__item-menu filter__item-menu--range dropdown-menu" aria-labelledby="filter-rate">
-                                    <div id="filter__imbd"></div>
-                                </div>
-                            </div>
-                            <!-- end filter item -->
-                            <!-- filter item -->
-                            <div class="filter__item" id="filter__year">
-                                <span class="filter__item-label">RELEASE YEAR:</span>
-
-                                <div class="filter__item-btn dropdown-toggle" role="button" id="filter-year" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <div class="filter__range">
-                                        <div id="filter__years-start"></div>
-                                        <div id="filter__years-end"></div>
-                                    </div>
-                                    <span></span>
-                                </div>
-
-                                <div class="filter__item-menu filter__item-menu--range dropdown-menu" aria-labelledby="filter-year">
-                                    <div id="filter__years"></div>
-                                </div>
-                            </div>
-                            <!-- end filter item -->
-                        </div>
-
-                        <!-- filter btn -->
-                        <button class="filter__btn" type="button">apply filter</button>
-                        <!-- end filter btn -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end filter -->
+   
     <!-- catalog -->
     @RenderBody();
 
     <!-- end catalog -->
-  
     <!-- footer -->
     <footer class="footer">
         <div class="container">
@@ -288,7 +171,7 @@
                 <div class="col-12 col-md-3">
                     <h6 class="footer__title">Download Our App</h6>
                     <ul class="footer__app">
-                        
+
                         <li><a href="#"><img src="~/Client-side/img/Download_on_the_App_Store_Badge.svg" alt=""></a></li>
                         <li><a href="#"><img src="~/Client-side/img/google-play-badge.png" alt=""></a></li>
                     </ul>
@@ -346,8 +229,10 @@
     </footer>
     <!-- end footer -->
     <!-- JS -->
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>*@
     <script src="~/Client-side/js/jquery-3.3.1.min.js"></script>
     <script src="~/Client-side/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/Client-side/js/owl.carousel.min.js"></script>
     <script src="~/Client-side/js/jquery.mousewheel.min.js"></script>
     <script src="~/Client-side/js/jquery.mCustomScrollbar.min.js"></script>
@@ -357,7 +242,17 @@
     <script src="~/Client-side/js/jquery.morelines.min.js"></script>
     <script src="~/Client-side/js/photoswipe.min.js"></script>
     <script src="~/Client-side/js/photoswipe-ui-default.min.js"></script>
+    <script src="~/lib/mustache.js/mustache.js"></script>
+    <script src="~/lib/jquery.growl/javascripts/jquery.growl.js"></script>
+    <script src="~/lib/fontawesome-free-5.13.0-web/js/solid.js"></script>
+    <script src="~/lib/fontawesome-free-5.13.0-web/js/brands.js"></script>
+    <script src="~/lib/fontawesome-free-5.13.0-web/js/fontawesome.js"></script>
+  
+    @*<script src="~/lib/twbs-pagination/jquery.twbsPagination.js"></script>*@
+    <script src="~/lib/twbs-pagination - Client/jquery.twbsPagination.js"></script>
+    <script src="~/shared/lib.js"></script>
     <script src="~/Client-side/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>

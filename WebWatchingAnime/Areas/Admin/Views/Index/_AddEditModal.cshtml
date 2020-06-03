@@ -1,0 +1,176 @@
+﻿<div id="modal-add-edit" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Thêm Sửa Anime</h4>
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+
+            </div>
+            <div class="modal-body">
+                <div class="col-12 grid-margin stretch-card">
+
+                    <div class="card">
+                        <div class="card-body"  id="horizontal-form">
+                            @*<h4 class="card-title">Basic form elements</h4>
+                            <p class="card-description"> Basic form elements </p>*@
+                            <form class="form-horizontal" role="form" id="frmMaintainance">
+                                @Html.AntiForgeryToken()
+                                <div class="form-group row">
+                                    <input type="hidden" id="hidIdM" value="0" />
+                                    <label for="txtNameM" class="col-sm-2 col-4 control-label no-padding-right">Tên sản phẩm</label>
+                                    <div class="col-sm-10 col-8">
+                                        <input type="text" name="txtNameM" class="form-control" id="txtNameM">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-4 control-label no-padding-right">Danh mục</label>
+                                    <div class="col-sm-10 col-8">
+                                        <select id="ddlCategoryIdM" required class="form-control" name="ddlCategoryIdM" value="">
+                                            <option>--Select category--</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-4 control-label no-padding-right">Loại sub</label>
+                                    <div class="col-sm-10 col-8">
+                                        <select id="ddlSubIdM" required class="form-control" name="ddlSubIdM" value="">
+                                            <option>--Select sub--</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-4 control-label no-padding-right">Năm sản xuất</label>
+                                    <div class="col-sm-10 col-8">
+                                        <select id="ddlYearIdM" required class="form-control" name="ddlYearIdM" value="">
+                                            <option>--Select category--</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="txtOderNameM" class="col-sm-2 col-4 control-label no-padding-right">Tên khác</label>
+                                    <div class="col-sm-10 col-8">
+                                        <input type="text" name="txtOderNameM" class="form-control" id="txtOderNameM">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="txtDescM" class="col-sm-2 col-4 control-label no-padding-right">Mô tả</label>
+                                    <div class="col-sm-10 col-8">
+                                        <textarea class="form-control" name="txtDescM" id="txtDescM" rows="4"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="txtImgSrcM" class="col-sm-2 col-4 control-label no-padding-right">Hình ảnh</label>
+                                    <div class="col-sm-10 col-8">
+                                        @*<input type="file" name="img[]" class="file-upload-default">
+                <div class="input-group col-xs-12">
+                    <input type="text" name="txtImgSrcM" id="txtImgSrcM" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                    <span class="input-group-append">
+                        <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                    </span>
+                </div>*@
+                                        <div class="col-12 col-sm-4"><img class="col-sm-12 img-fluid" id="imageShow" data-path="" /></div>
+                                        <br />
+                                        <div class="custom-file mb-3">
+                                            <input type="file" class="custom-file-input" id="fileInputImage" name="fileInputImage">
+                                            <label class="custom-file-label " id="txtImage" for="fileInputImage">Chọn ảnh</label>
+                                        </div>
+                                    </div>
+
+                                    <img class="img-fluid" width="100" id="txtImage" data-path="" />
+
+
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="txtSrcTrailerM" class="col-sm-2 col-4 control-label no-padding-right">Trailer</label>
+                                    <div class="col-sm-10 col-8">
+                                        <input type="text" name="txtSrcTrailerM" class="form-control" id="txtSrcTrailerM">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="txtEpisodesMaxM" class="col-sm-2 col-4 control-label no-padding-right">Tổng số tập</label>
+                                    <div class="col-sm-10 col-8">
+                                        <input type="text" name="txtEpisodesMaxM" class="form-control" id="txtEpisodesMaxM">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-offset-2 col-sm-10 col-xs-offset-4 col-8">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" checked="checked" id="ckIsAnimeM">
+                                                <span class="text">Anime</span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" id="btnSave" class="btn btn-gradient-primary mr-2">Submit</button>
+                                @*<button class="btn btn-light">Cancel</button>*@
+                                <button type="button" class="bootbox-close-button  btn btn-light" data-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div><div class="col-12 grid-margin stretch-card">
+                    @*<div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Basic form elements</h4>
+                            <p class="card-description"> Basic form elements </p>
+                            <form class="forms-sample">
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Name</label>
+                                    <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail3">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword4">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleSelectGender">Gender</label>
+                                    <select class="form-control" id="exampleSelectGender">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>File upload</label>
+                                    <input type="file" name="img[]" class="file-upload-default">
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputCity1">City</label>
+                                    <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleTextarea1">Textarea</label>
+                                    <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                                <button class="btn btn-light">Cancel</button>
+                            </form>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

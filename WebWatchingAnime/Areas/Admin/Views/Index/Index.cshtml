@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/layout.cshtml";
+}
+@section Scripts{
+
+    <script src="~/Admin/Anime/index.js"></script>
+    <script>
+        var anime = new animeController();
+        anime.init();
+    </script>
+    @*<script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>*@
+}
+
+<div class="row">
+    <div class=" col-sm-4  col-12 form-group">
+        @*<label for="ddlCategorySearch">Categories</label>*@
+        <select class="form-control" id="ddlCategorySearch">
+           
+        </select>
+    </div>
+
+    <div class=" col-sm-4  col-12 form-group" >
+        <div class="input-group">
+            <input type="text" id="txtKeyword" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-sm btn-gradient-primary" type="button">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4  col-12 form-group " >
+        <button type="button" id="btnCreate" class="btn btn-primary btn-fw float-right float-sm-none">Create</button>
+    </div>
+
+    <div class="col-12 grid-margin stretch-card">
+
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr >
+                            <th class="col-3" >Anime </th>
+                            <th class="col-4" >Description</th>
+                            <th class="col-1">Episode</th>
+                            <th class="col-1">Year</th>
+                            <th class="col-3"></th>
+                        </tr>
+                    </thead>
+                    @*<tbody>
+                        <tr>
+                            <td>Jacob</td>
+                            <td>Photoshop</td>
+                            <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
+                            <td><label class="badge badge-danger">Pending</label></td>
+                        </tr>
+
+                    </tbody>*@
+                    <tbody id="tbl-content"></tbody>
+                </table>
+                <div class="row">
+                    <ul id="paginationUL"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td >{{Name}}</td>
+        <td >{{Description}}</td>
+        <td>{{Episode}}</td>
+        <td>{{{Year}}}</td>
+        <td>
+            <button class="btn btn-success btn-sm btn-edit" data-id="{{Id}}"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger btn-sm btn-delete" data-id="{{Id}}"><i class="fas fa-trash-alt"></i></button>
+            <a href="/Admin/Episode/Index/{{Id}}" class="btn btn-info btn-sm btn-view" data-id="{{Id}}"><i class="fas fa-info-circle"></i></a>
+        </td>
+    </tr>
+</script>
+@await Html.PartialAsync("_AddEditModal.cshtml")
