@@ -35,7 +35,8 @@ namespace WebWatchingAnime
                    .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddImageResizer();
             services.AddDbContext<WebDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("WebCoreDB")));
+                //options.UseMySql(Configuration.GetConnectionString("WebCoreDB")));
+               options.UseSqlServer(Configuration.GetConnectionString("WebCoreDB")));
 
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<WebDbContext>()

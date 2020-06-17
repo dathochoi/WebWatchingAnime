@@ -1,18 +1,23 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model  WebWatchingAnime.ViewModel.ViewModel.Client.SearchViewModel;
 @section Styles{
 
-    
+
 }
 @section Scripts{
-   
+
     <script src="~/Client/index.js"></script>
     <script>
         var anime = new viewController();
-        anime.init();
+        anime.init(@Model.CategoryId, @Model.YearId,"@Model.TextSearch", @Model.Animes, @Model.Films);
+
+        //anime.year =@Model.YearId;
+        //console.log("year " + anime.year);
     </script>
 }
+
 
 <div class="catalog">
     <div class="container">
@@ -62,6 +67,8 @@
         </div>
     </div>
 </div>
+
+
 
 <script id="table-template" type="x-tmpl-mustache">
     <div class="col-6 col-sm-4 col-lg-3 col-xl-2">

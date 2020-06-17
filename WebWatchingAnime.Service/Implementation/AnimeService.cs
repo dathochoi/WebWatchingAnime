@@ -77,6 +77,7 @@ namespace WebWatchingAnime.Service.Implementation
                 query = query.Where(x => x.Name.Contains(keyword));
             }
 
+
             int totalRow = query.Count();
 
             query = query.OrderByDescending(x => x.UpdateTime)
@@ -101,7 +102,7 @@ namespace WebWatchingAnime.Service.Implementation
             return paginationSet;
         }
 
-        public PagedResult<AnimeClientViewModel> GetAllPagingClient(int? categoryId, string keyword, int page, int pageSize)
+        public PagedResult<AnimeClientViewModel> GetAllPagingClient(int? categoryId, string keyword, int page, int pageSize, int? year, bool anime, bool film)
         {
             var query = _context.Animes.AsQueryable();
             if (categoryId.HasValue)
@@ -114,6 +115,18 @@ namespace WebWatchingAnime.Service.Implementation
             if (!string.IsNullOrEmpty(keyword))
             {
                 query = query.Where(x => x.Name.Contains(keyword));
+            }
+            if(anime == true)
+            {
+                query = query.Where(x => x.IsAnime == true);
+            }
+            if (film == true)
+            {
+                query = query.Where(x => x.IsAnime == false);
+            }
+            if (year.HasValue)
+            {
+                query = query.Where(x => x.YearId == year);
             }
 
             int totalRow = query.Count();
@@ -164,7 +177,7 @@ namespace WebWatchingAnime.Service.Implementation
             foreach (var item in vm.CategoryIds)
             {
                 var c = _context.Catetgories.Find(Int32.Parse(item));
-                if( c == null)
+                if (c == null)
                 {
                     vm.CategoryNames.Add(" ");
                 }
@@ -172,14 +185,80 @@ namespace WebWatchingAnime.Service.Implementation
                 {
                     vm.CategoryNames.Add(c.Name);
                 }
-                
+
             }
             return vm;
         }
 
-        public AnimeViewModel GetDetails(int id)
+        public AnimeDetailsViewModel GetDetails(int id)
         {
-            throw new NotImplementedException();
+            var product = _context.Animes.Find(id);
+            if (product == null)
+            {
+                throw new Exception("Anime isn't in data.");
+            }
+            //var vm = MapperExtend.AnimeToVM(product);
+            AnimeDetailsViewModel vm = new AnimeDetailsViewModel();
+            vm.Id = product.Id;
+            vm.Name = product.Name;
+            vm.OrtherName = product.OrderName;
+            vm.Image = product.ImgSrc;
+            vm.Details = product.Description;
+            vm.MaxEps = product.EpisodesMax;
+
+            vm.YearId = product.YearId;
+            var y = _context.Year.Find(vm.YearId);
+            if (y == null)
+            {
+                vm.YearName = " ";
+            }
+            else
+            {
+                vm.YearName = y.Name;
+            }
+
+            var sub = _context.Subs.Find(product.SubId);
+            if (sub == null)
+            {
+                vm.SubName = " ";
+            }
+            else
+            {
+                vm.SubName = sub.Name;
+            }
+
+
+            vm.CategoryId = new List<string>();
+            if (!String.IsNullOrEmpty(product.CategoryIds))
+            {
+                vm.CategoryId = product.CategoryIds.Split(",");
+            }
+            vm.CategoryName = new List<string>();
+            foreach (var item in vm.CategoryId)
+            {
+                var c = _context.Catetgories.Find(Int32.Parse(item));
+                if (c == null)
+                {
+                    vm.CategoryName.Add(" ");
+                }
+                else
+                {
+                    vm.CategoryName.Add(c.Name);
+                }
+            }
+            vm.EpsName = new List<string>();
+            vm.EpsId = new List<int>();
+            var eps = _context.Episodes.Where(x => x.AnimeId == product.Id).OrderByDescending(x => x.STT).Take(3);
+            if (eps != null)
+            {
+                foreach (var ep in eps)
+                {
+                    vm.EpsId.Add(ep.Id);
+                    vm.EpsName.Add(ep.Number);
+                }
+            }
+
+            return vm;
         }
 
         public void Update(AnimeViewModel anime)

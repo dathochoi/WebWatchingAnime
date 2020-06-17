@@ -1,0 +1,25 @@
+﻿body {
+}
+
+.btnEpi {
+    border: 1px solid #0c0c0c;
+    border-radius: 4px;
+    display: block;
+    margin: 2px;
+    padding: 5px 10px;
+    background: #404040;
+    box-shadow: 0 0 20px 0 rgba(68, 68, 68, 0.5);
+    color: white;
+    /*//transition: 2s ease;*/
+    /*//transition: 1s;*/
+}
+    .btnEpi:hover {
+        background-image: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+        box-shadow: 0 0 20px 0 rgba(255,88,96,0.5);
+        transition: 1s;
+    }
+
+.active {
+        background-image: linear-gradient(90deg, #ff55a5 0%, #ff5860 100%);
+        box-shadow: 0 0 20px 0 rgba(255,88,96,0.5);
+}

@@ -15,10 +15,16 @@ namespace WebWatchingAnime.Controllers
             this._episodeService = episodeService;
         }
         // GET: View/Index/5
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index(int id, [FromQuery]int? epi)
         {
             ViewData["Id"] = id;
             ViewData["AnimeName"] = _episodeService.GetAnimeName(id);
+            ViewData["Epi"] = 0;
+            if (epi.HasValue)
+            {
+                ViewData["Epi"] = epi.Value;
+            }
+            
             var list =await  _episodeService.GetAllWithAnimeId(id);
             return View(list);
         }

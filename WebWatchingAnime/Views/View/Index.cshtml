@@ -4,14 +4,19 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_layout2.cshtml";
+    //Layout = "~/Views/Shared/_layout2.cshtml";
 }
+@section Styles{
 
+    <link href="~/Client-side/css/mystyles.css" rel="stylesheet" />
+}
 @section scripts {
     @*<script src="~/Client/index.js"></script>*@
     <script src="~/Client/view.js"></script>
     <script>
         var view = new viewcontroller();
-        view.init();
+        view.init(@ViewData["Epi"]);
 
     </script>
 }

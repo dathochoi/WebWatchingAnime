@@ -14,8 +14,8 @@ namespace WebWatchingAnime.Service.Interfaces
         Task<List<AnimeViewModel>> GetAll();
         PagedResult<AnimeViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize);
 
-        PagedResult<AnimeClientViewModel> GetAllPagingClient(int? categoryId, string keyword, int page, int pageSize);
-        AnimeViewModel GetDetails(int id);
+        PagedResult<AnimeClientViewModel> GetAllPagingClient(int? categoryId, string keyword, int page, int pageSize, int? year, bool anime ,bool film);
+        AnimeDetailsViewModel GetDetails(int id);
         int Add(AnimeViewModel anime);
         void Update(AnimeViewModel anime);
         void Delete(int id);

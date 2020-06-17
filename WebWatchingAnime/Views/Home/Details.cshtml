@@ -1,6 +1,17 @@
 ﻿
 @{
     ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_layout2.cshtml";
+}
+@model WebWatchingAnime.ViewModel.ViewModel.Client.AnimeDetailsViewModel;
+@section Scripts{
+
+    @*//<script src="~/Client/index.js"></script>*@
+    @*<script src="~/Client/search.js"></script>
+        <script>
+            var search = new searchController();
+            search.init();
+        </script>*@
 }
 
 <section class="section2details">
@@ -12,7 +23,7 @@
         <div class="row">
             <!-- title -->
             <div class="col-12">
-                <h1 class="details__title">I Dream in Another Language</h1>
+                <h1 class="details__title">@Model.Name</h1>
             </div>
             <!-- end title -->
             <!-- content -->
@@ -24,16 +35,16 @@
                         <div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-5">
                             <div class="card__cover">
                                 @*<img src="~/Client-side/img/covers/cover.jpg" alt="">*@
-                                <img src="~/Client-side/img/yes (2).jpg" />
+                                <img src="@Model.Image" />
                             </div>
                         </div>
 
                         @*<div class="col-12 col-sm-8 col-md-8 col-lg-8 col-xl-5">
-                            <div class="card__cover img-fluid " style="max-width: 100%;height:auto">
-                                <img src="~/Client-side/img/covers/cover.jpg" alt="">
-                                <img src="~/Client-side/img/yes (1).jpg" />
-                            </div>
-                        </div>*@
+                                <div class="card__cover img-fluid " style="max-width: 100%;height:auto">
+                                    <img src="~/Client-side/img/covers/cover.jpg" alt="">
+                                    <img src="~/Client-side/img/yes (1).jpg" />
+                                </div>
+                            </div>*@
                         <!-- end card cover -->
                         <!-- card content -->
                         @*<div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-7">*@
@@ -43,41 +54,53 @@
                                     <span class="card__rate"><i class="icon ion-ios-star"></i>Nội dung: </span>
 
                                     @*<ul class="card__list">
-                                        <li>HD</li>
-                                        <li>16+</li>
-                                    </ul>*@
+                                            <li>HD</li>
+                                            <li>16+</li>
+                                        </ul>*@
                                 </div>
 
                                 <div class="card__description card__description--details">
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                                   @Model.Details
                                 </div>
 
                                 <ul class="card__meta">
-                                    <li><span>Tên khác:</span> Other name</li>
-                                    <li><span>Năm: </span> 2017</li>
-                                    <li><span>Loại sub:</span> NoSub</li>
+                                    <li><span>Tên khác:</span> @Model.OrtherName</li>
+                                    <li><span>Năm: </span> @Model.YearName</li>
+                                    <li><span>Loại sub:</span> @Model.SubName</li>
                                     <li>
-                                        <span>Thể loại:</span> <a href="#">Action</a>
-                                        <a href="#">Triler</a>
+                                        <span>Thể loại:</span>
+                                        @{
+                                            for (int i = 0; i < @Model.CategoryId.Count; i++)
+                                            {
+                                                var idn = @Model.CategoryName[i];
+                                                var idc = (@Model.CategoryId.ToList())[i];
+                                                <a href="/Home/Index?Category=@idc">@idn</a>
+                                            }
+                                        }
+
                                     </li>
 
+                                    @*<li>
+                                    <span>Season</span> <a class="season" href="#">Season 1</a>
+                                    <a class="season" href="#">Seaon 2</a>
+                                </li>*@
                                     <li>
-                                        <span>Season</span> <a class="season" href="#">Season 1</a>
-                                        <a class="season" href="#">Seaon 2</a>
-                                    </li>
-                                    <li>
-                                        <span>Tập phim</span> <a class="eps" href="#">Tập 1</a>
-                                        <a class="eps" href="#">Tập 2</a>
-                                        <a class="eps" href="#">Tập 3</a>
-                                    </li>
+                                        <span>Tập phim</span>
+                                        @{
+                                            for (int i = 0; i < @Model.EpsId.Count; i++)
+                                            {
+                                                var idn = @Model.EpsName[i];
+                                                var idc = @Model.EpsId[i];
+                                                <a class="eps" href="/View/@Model.Id/@idc">@idn</a>
+                                            }
+                                        }
 
-
+                                    </li>
+                                    <li><span>Số tập:</span> @Model.MaxEps</li>
                                 </ul>
 
-
-
                                 <div>
-                                    <a href="/View/Index" class="priceview col-xl-6 col-sm-4 col-12">
+                                    <a href="/View/Index/@Model.Id" class="priceview col-xl-6 col-sm-4 col-12">
                                         <i class=""></i>
                                         <span>Xem phim</span>
                                     </a>
@@ -92,10 +115,10 @@
             <!-- end content -->
             <!-- player -->
             @*<div class="col-12 col-xl-6">
-                <iframe width="853" height="480" src="//ok.ru/videoembed/3279805221598" frameborder="0" allow="autoplay" allowfullscreen></iframe>
-            </div>*@
+                    <iframe width="853" height="480" src="//ok.ru/videoembed/3279805221598" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                </div>*@
             <!-- end player -->
-            
+
         </div>
     </div>
     <!-- end details content -->

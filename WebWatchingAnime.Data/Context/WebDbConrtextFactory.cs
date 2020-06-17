@@ -20,7 +20,7 @@ namespace WebWatchingAnime.Data.Context
             var conectionString = configuration.GetConnectionString("WebCoreDB");
 
             var optionsBuider = new DbContextOptionsBuilder<WebDbContext>();
-            optionsBuider.UseMySql(conectionString).EnableSensitiveDataLogging();
+            optionsBuider.UseSqlServer(conectionString).EnableSensitiveDataLogging();
 
             return new WebDbContext(optionsBuider.Options);
         }

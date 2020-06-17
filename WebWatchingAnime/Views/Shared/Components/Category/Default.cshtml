@@ -4,7 +4,7 @@
         @foreach (var item in Model)
         {
             <li>
-                <a href="@item.Id">@item.Name</a>
+                <a href="@item.Id" data-id="@item.Id" class="btnCategory">@item.Name</a>
             </li>
         }
     </ul>

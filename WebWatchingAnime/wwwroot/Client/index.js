@@ -1,35 +1,125 @@
 ﻿var viewController = function () {
     var oldsize = 0;
-    this.init = function () {
+    var category = '';
+    var year = '';
+    var anime = false;
+    var film = false;
+    var txtSearch = '';
+    this.init = function (categoryId, yearId,  textSearch,animes, films) {
+        if (categoryId !== 0) {
+            category = categoryId;
+        }
+        if (yearId !== 0) {
+            year = yearId;
+        }
+        if (textSearch.localeCompare("z00000zzzzz")  !== 0 ) {
+            txtSearch = textSearch;
+        }
+        if (animes !== 0) {
+            animes = animes;
+        }
+        if (films !== 0) {
+            film = films;
+        }
         loadData();
         Register();
     };
     function Register() {
-        //$("#btnClick").on("click", function () {
-        //    console.log("clicked video ");
-        //    var x = $(".html5-vpl_panel_btn html5-vpl_ok");
-        //    x.remove();
-        //});
-        //console.log("clicked video ssds ");
-        ////var iframe = document.getElementById("btnClick");
-        ////var elmnt = document.getElementsByClassName("html5-vpl_panel_btn html5-vpl_ok");
-        ////elmnt[0].remove();
-        //var elmnt = document.getElementsByClassName("html5-vpl_panel_btn html5-vpl_ok")[0];
-        //elmnt.remove();
+        $("body").on("click", ".btnCategory", function (e) {
+            e.preventDefault();
+
+            year = '';
+            anime = false;
+            film = false;
+            txtSearch = '';
+            lib.configsAdmin.pageIndex = 1;
+
+            category = $(this).data("id");
+
+            loadData();
+            //console.log(that);
+        });
+        $("body").on("click", ".btnYear", function (e) {
+            e.preventDefault();
+            category = '';
+            anime = false;
+            film = false;
+            txtSearch = '';
+            lib.configsAdmin.pageIndex = 1;
+
+            year = $(this).data("id");
+
+            loadData();
+
+            //var that = $(this).data("id");
+            //console.log(that);
+        });
+        $("body").on("click", ".btnAnimes", function (e) {
+            e.preventDefault();
+            category = '';
+            year = '';
+            anime = true;
+            film = false;
+            txtSearch = '';
+            lib.configsAdmin.pageIndex = 1;
+            loadData();
+            //var that = $(this).data("id");
+            //console.log("animes");
+        });
+        $("body").on("click", ".btnFilms", function (e) {
+            e.preventDefault();
+            category = '';
+            year = '';
+            anime = false;
+            film = true;
+            txtSearch = '';
+            lib.configsAdmin.pageIndex = 1;
+            loadData();
+            //var that = $(this).data("id");
+            //console.log("films");
+        });
+        $('#btnSearch').on('click', function () {
+            lib.configsAdmin.pageIndex = 1;
+            category = '';
+            year = '';
+            
+            anime = false;
+            film = false;
+
+            txtSearch = $('#txtKeyword').val();
+            loadData();
+        });
+
+
+        $('#txtKeyword').on('keypress', function (e) {
+            if (e.which === 13) {
+                lib.configsAdmin.pageIndex = 1;
+                category = '';
+                year = '';
+                anime = false;
+                film = false;
+
+                txtSearch = $('#txtKeyword').val();
+                loadData();
+            }
+        });
     }
     function loadData(isPageChanged) {
         var template = $('#table-template').html();
         var render = "";
 
-        var catelogryID = "";
-        if ($('#ddlCategorySearch').val() != null) {
+        //var catelogryID = "";
+        //if ($('#ddlCategorySearch').val() != null) {
             catelogryID = $('#ddlCategorySearch').val();
-        }
+        //}
         $.ajax({
             type: "GET",
             data: {
-                categoryId: catelogryID,
-                keyword: $('#txtKeyword').val(),
+                categoryId: category,
+                anime: anime,
+                film: film,
+                year: year,
+                keyword: txtSearch,
                 page: lib.configs.pageIndex,
                 pageSize: lib.configs.pageSize
             },
